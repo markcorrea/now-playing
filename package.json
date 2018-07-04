@@ -5,7 +5,8 @@
   "scripts": {
     "start": "npm run build",
     "build": "webpack -d && cp ./index.html dist/index.html && webpack-dev-server --hot --open",
-    "build:prod": "webpack -p && cp ./index.html dist/index.html"
+    "build:prod": "webpack -p && cp ./index.html dist/index.html",
+    "heroku-postbuild": "webpack -p"
   },
   "author": "Marcus Corrêa",
   "license": "MIT",
