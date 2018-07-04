@@ -1,0 +1,50 @@
+$primary-color: #36465F;
+
+body {
+    background-color:$primary-color;
+    color: white;
+    font-family: "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+    position: relative;
+    padding-top: 64px;
+    letter-spacing: 0.3px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-15 {
+    margin-top: 15px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+.mt-30 {
+    margin-top: 30px;
+}
+
+.primary-font {
+    font-size: 12px;
+    font-weight: 300;
+    color: $primary-color;
+}
+.primary-font-b {
+    font-size: 12px;
+    font-weight: 400;
+    color: $primary-color;
+}
+
+.primary-button {
+    padding: 3px 20px;
+    background-color: #fff;
+    border: none;
+    border-radius: 2px;
+    font-size: 16px;
+    font-weight: 700;
+    color: $primary-color;
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
