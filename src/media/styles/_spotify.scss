@@ -9,6 +9,7 @@
     
     iframe {
       display: block;
+      border: none;
       transition: opacity 0.125s;
       .js & {
         opacity: 0;
