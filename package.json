@@ -4,7 +4,7 @@
   "description": "#NowPlaying trending app which allows to see the media being shared as well as publish.",
   "scripts": {
     "start": "npm run build",
-    "build": "webpack -d && cp ./index.html dist/index.html",
+    "build": "webpack -d && cp ./index.html dist/index.html && webpack-dev-server --hot --open",
     "build:prod": "webpack -p && cp ./index.html dist/index.html"
   },
   "author": "Marcus Corrêa",
