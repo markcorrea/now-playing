@@ -19,11 +19,11 @@ export class TrendingController {
   /* This function is called every time a response from the backend has to be added to the Posts. */
   /* It formats each item of the posts to the proper format to fit to the component. */
   formatPost = (post) => {
-    let youtubeUrl = post.entities && post.entities.urls && post.entities.urls.length > 0 && post.entities.urls[0].expanded_url || ''
+    let url = post.entities && post.entities.urls && post.entities.urls.length > 0 && post.entities.urls[0].expanded_url || ''
     return {
       _id: post.id,
       userImage: post.user.profile_image_url,
-      youtubeUrl: youtubeUrl,
+      url: url,
       text: post.text,
       createdAt: moment(post.created_at).format('MMM DD, HH:mm a'),
       userName: post.user.name,

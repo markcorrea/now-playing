@@ -8,7 +8,7 @@ export default class TrendingService {
     /* If the 'lastId' variable is informed, it means that it is beind called by the Infinite Scrolling. */
     getNearbyPosts = (latlng, lastId = null) => {
         let body = {
-            "q": "url:youtube #nowplaying filter:media",
+            "q": "url:spotify OR youtube #nowplaying",
             "count": 5,
             "geocode": latlng.lat + "," + latlng.lng + ",100km"
         }
