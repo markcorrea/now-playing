@@ -47,6 +47,10 @@ module.exports = {
             name: 'images/[hash]-[name].[ext]'
           }
         }]
+      },
+      {
+        test: /\.ico$/,
+        loader: 'file-loader?name=[name].[ext]'
       }
     ]
   }
