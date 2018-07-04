@@ -17,7 +17,7 @@ export class TrendingList extends React.Component {
   @observable loading = false
   @observable showSuccessPost = false
   @observable showInfoPost = false
-  socket = socketIOClient('http://localhost:3000');
+  socket = socketIOClient('https://ancient-coast-63668.herokuapp.com/');
 
   constructor(props) {
     super(props)

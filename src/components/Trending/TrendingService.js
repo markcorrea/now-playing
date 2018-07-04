@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default class TrendingService {
     headers = { 'Content-Type': 'application/json' }
-    API = 'http://localhost:3000/twitter/'
+    API = 'https://ancient-coast-63668.herokuapp.com/twitter/'
 
     /* This function gets the 5 most recent posts in a 100Km range */
     /* If the 'lastId' variable is informed, it means that it is beind called by the Infinite Scrolling. */
