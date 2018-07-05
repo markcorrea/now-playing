@@ -10,6 +10,8 @@ Project overview:
 
 Now Playing is a project focused on showing the developer and its abilities. In this case the Frontend.
 
+I have chosen to use React with Mobx and Webpack, mainly because these are the main frameworks I use today. React can divide the project in reusable components, and MobX makes the state management good to understand and it's so much easier than Redux. Webpack not just bundles the module, but gives me back the URL access and can convert all the files on the project (images, code, style, any) to understandable files to the browser.
+
 It is a simple page which connects to the Twitter API, and has some rules to show only those tweets we want to be shown on screen. These rules are:
 - Geolocation: first thing, it gets the current location of the user, such as latitude and longitude, and also the City.
 - Filters: the project brings every tweet that contains the hastag '#nowplaying' on its body. Also, it filters only those tweets with content coming from Spotify or Youtube. 
