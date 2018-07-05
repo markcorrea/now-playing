@@ -3,6 +3,8 @@
 This project is also published on Netlify on the link:
 - https://marcusfrontend.netlify.com/
 
+PS: This projects connects to the Twitter API, which doesn't allow cross-origin access. That's why it connects to an API which makes the data transport. Check it here:
+- https://github.com/markcorrea/now-playing-passport
 
 Project overview:
 
@@ -60,10 +62,6 @@ WEBPACK
 
 GIT
 - Version control system, aiming on performance.
-
-IMPORTANT: Once the Twitter API doesn't allow free access for everyone, (and also is blocket by cross-origin browser requests), an API project was created, which is necessary to make this Now Playing project work. It is already published on a public domain and doesn't have to be bundled locally. Here's its page:
-
-https://github.com/markcorrea/now-playing-passport
 
 # Project Installation:
 
