@@ -32,18 +32,29 @@ export class TrendingList extends React.Component {
   /* At first we get the coordinates and the actual city. Then the screen is filled with the 5 most recent posts. */
   /* Once the posts are loaded, the Websocket is started, and then we start the Infinite Scroll. */
   componentDidMount() {
-    this.loading = true
-    this.TrendingController.getCurrentCity().then(() => {
-      this.TrendingController.getNearbyPosts(this.coords, null).then((result) => {
-        this.posts = result.data.statuses.map(status => { return this.TrendingController.formatPost(status) })
-        this.loading = false
-        this.startSocket()
-      })
-    }, () => {
-      console.log('An error ocurred while getting the current city')
-      this.loading = false;
-    })
-    this.setInfiniteScroll()
+    function myInterval () {
+      setTimeout(() => {
+        return console.log('resultado')
+      }, 2000)
+    }
+    console.log('antes do resultado')
+    async function foo () {
+      await myInterval()
+    }
+
+    foo()
+    // this.loading = true
+    // this.TrendingController.getCurrentCity().then(() => {
+    //   this.TrendingController.getNearbyPosts(this.coords, null).then((result) => {
+    //     this.posts = result.data.statuses.map(status => { return this.TrendingController.formatPost(status) })
+    //     this.loading = false
+    //     this.startSocket()
+    //   })
+    // }, () => {
+    //   console.log('An error ocurred while getting the current city')
+    //   this.loading = false;
+    // })
+    // this.setInfiniteScroll()
   }
 
   /* Function called everytime we change an input. In this case, the Youtube URL input or the Comment textarea. */
