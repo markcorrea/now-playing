@@ -38,69 +38,56 @@ export class TrendingController {
 
   /* The Get Current City function basically unites the three functions (below, including it) that would bring the location information. */
   /* It first gets the Geolocation (latitude, longitude), then uses it to get the current city. */
-  getCurrentCity = () => {
-    return new Promise((resolveCurrentCity, reject) => {
-      return this.getCurrentGeolocation().then(coordinates => {
-        return this.getCityFromGeolocation(coordinates).then(city => {
-          if (city.status === "success") {
-            this.coords.lat = coordinates.coords.latitude;
-            this.coords.lng = coordinates.coords.longitude;
-            this.currentCity = city.city;
-            resolveCurrentCity();
-          } else {
-            console.log("ERROR");
-            reject(null);
-          }
-        });
-      });
-    });
+  getCurrentCity = async () => {
+    let coordinates = await this.getCurrentGeolocation();
+    let city = await this.getCityFromGeolocation(coordinates);
+    if (city.status === "success") {
+      this.coords.lat = coordinates.coords.latitude;
+      this.coords.lng = coordinates.coords.longitude;
+      this.currentCity = city.city;
+    }
   };
 
   /* This function uses the JavaScript to get the Geolocation thru the navigator. */
-  getCurrentGeolocation = () => {
+  getCurrentGeolocation() {
     return new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
-        position => {
-          resolve(position);
-        },
-        () => {
-          reject({ status: "error" });
-        }
+        position => resolve(position),
+        () => reject({ status: "error" })
       );
     });
-  };
+  }
 
   /* Here we use the Geolocation and, with it, use the Google Maps API to discover the city where it belongs. */
   getCityFromGeolocation = coordinates => {
     return new Promise(
-      (resolve, reject) => {
+      resolve => {
         let latlng = new google.maps.LatLng(
           coordinates.coords.latitude,
           coordinates.coords.longitude
         );
-        new google.maps.Geocoder().geocode({ latLng: latlng }, function(
-          results,
-          status
-        ) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            if (results[1]) {
-              let city = null;
-              let c, lc, component;
-              results.map(result => {
-                if (!city && result.types[0] === "locality") {
-                  result.address_components.map(component => {
-                    if (component.types[0] === "locality") {
-                      resolve({ status: "success", city: component.long_name });
-                    }
-                  });
-                }
-              });
+        new google.maps.Geocoder().geocode(
+          { latLng: latlng },
+          (results, status) => {
+            if (status == google.maps.GeocoderStatus.OK) {
+              if (results[1]) {
+                let city = null;
+                results.map(result => {
+                  if (!city && result.types[0] === "locality") {
+                    result.address_components.map(component => {
+                      if (component.types[0] === "locality") {
+                        resolve({
+                          status: "success",
+                          city: component.long_name
+                        });
+                      }
+                    });
+                  }
+                });
+              }
             }
           }
-        });
-      },
-      () => {
-        console.log("error");
+        );
       }
     );
   };
