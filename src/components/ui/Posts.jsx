@@ -10,9 +10,9 @@ export class Posts extends React.Component {
   /* This function filters the incoming youtubeURL and delivers only the video ID, so that we can */
   /* insert it at the iframe tag. */
   youtubeCode = youtubeUrl => {
-    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
 
-    let match = youtubeUrl.match(regExp);
+    const match = youtubeUrl.match(regExp);
 
     if (match && match[2].length == 11) {
       return match[2];
@@ -25,8 +25,8 @@ export class Posts extends React.Component {
   /* In all cases, it treats the track, album and playlist, but will always render only the first song on each. */
   spotifyCode = spotifyUrl => {
     if (spotifyUrl.search("track") != "-1") {
-      let regExp = /^.*(track\/)([^#\&\?]*).*/;
-      let match = spotifyUrl.match(regExp);
+      const regExp = /^.*(track\/)([^#\&\?]*).*/;
+      const match = spotifyUrl.match(regExp);
       if (match && match[2].length == 22) {
         return "https://open.spotify.com/embed?uri=spotify:track:" + match[2];
       } else {
@@ -35,8 +35,8 @@ export class Posts extends React.Component {
     }
 
     if (spotifyUrl.search("album") != "-1") {
-      let regExp = /^.*(album\/)([^#\&\?]*).*/;
-      let match = spotifyUrl.match(regExp);
+      const regExp = /^.*(album\/)([^#\&\?]*).*/;
+      const match = spotifyUrl.match(regExp);
       if (match && match[2].length == 22) {
         return "https://open.spotify.com/embed?uri=spotify:album:" + match[2];
       } else {
@@ -45,10 +45,10 @@ export class Posts extends React.Component {
     }
 
     if (spotifyUrl.search("playlist") != "-1") {
-      let userRegExp = /^.*(user\/)([^#\/\?]*).*/;
-      let codeRegExp = /^.*(playlist\/)([^#\&\?]*).*/;
-      let matchUser = spotifyUrl.match(userRegExp);
-      let matchCode = spotifyUrl.match(codeRegExp);
+      const userRegExp = /^.*(user\/)([^#\/\?]*).*/;
+      const codeRegExp = /^.*(playlist\/)([^#\&\?]*).*/;
+      const matchUser = spotifyUrl.match(userRegExp);
+      const matchCode = spotifyUrl.match(codeRegExp);
       if (
         matchUser &&
         matchUser[2].length == 11 &&

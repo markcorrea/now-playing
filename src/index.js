@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
-import '../favicon.ico'
-import './media/styles/main.scss';
+import "../favicon.ico";
+import "./media/styles/main.scss";
 
 import Trending from "./components/Trending/Trending";
 render(

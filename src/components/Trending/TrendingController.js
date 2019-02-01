@@ -19,7 +19,7 @@ export class TrendingController {
   /* This function is called every time a response from the backend has to be added to the Posts. */
   /* It formats each item of the posts to the proper format to fit to the component. */
   formatPost = post => {
-    let url =
+    const url =
       (post.entities &&
         post.entities.urls &&
         post.entities.urls.length > 0 &&
@@ -39,12 +39,16 @@ export class TrendingController {
   /* The Get Current City function basically unites the three functions (below, including it) that would bring the location information. */
   /* It first gets the Geolocation (latitude, longitude), then uses it to get the current city. */
   getCurrentCity = async () => {
-    let coordinates = await this.getCurrentGeolocation();
-    let city = await this.getCityFromGeolocation(coordinates);
-    if (city.status === "success") {
-      this.coords.lat = coordinates.coords.latitude;
-      this.coords.lng = coordinates.coords.longitude;
-      this.currentCity = city.city;
+    try {
+      const coordinates = await this.getCurrentGeolocation();
+      const city = await this.getCityFromGeolocation(coordinates);
+      if (city.status === "success") {
+        this.coords.lat = coordinates.coords.latitude;
+        this.coords.lng = coordinates.coords.longitude;
+        this.currentCity = city.city;
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -60,35 +64,32 @@ export class TrendingController {
 
   /* Here we use the Geolocation and, with it, use the Google Maps API to discover the city where it belongs. */
   getCityFromGeolocation = coordinates => {
-    return new Promise(
-      resolve => {
-        let latlng = new google.maps.LatLng(
-          coordinates.coords.latitude,
-          coordinates.coords.longitude
-        );
-        new google.maps.Geocoder().geocode(
-          { latLng: latlng },
-          (results, status) => {
-            if (status == google.maps.GeocoderStatus.OK) {
-              if (results[1]) {
-                let city = null;
-                results.map(result => {
-                  if (!city && result.types[0] === "locality") {
-                    result.address_components.map(component => {
-                      if (component.types[0] === "locality") {
-                        resolve({
-                          status: "success",
-                          city: component.long_name
-                        });
-                      }
-                    });
-                  }
+    return new Promise(resolve => {
+      const latlng = new google.maps.LatLng(
+        coordinates.coords.latitude,
+        coordinates.coords.longitude
+      );
+      new google.maps.Geocoder().geocode(
+        { latLng: latlng },
+        (locations, status) => {
+          if (status == google.maps.GeocoderStatus.OK && locations.length > 0) {
+            const location = locations.find(
+              location => location.types.some(type => type === "locality")
+            );
+            if (location && location !== undefined) {
+              const component = location.address_components.find(
+                component => component.types.some(type => type === "locality")
+              );
+              if (component && component !== undefined) {
+                resolve({
+                  status: "success",
+                  city: component.long_name
                 });
               }
             }
           }
-        );
-      }
-    );
+        }
+      );
+    });
   };
 }

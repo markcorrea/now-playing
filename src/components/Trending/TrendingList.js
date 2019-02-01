@@ -30,32 +30,29 @@ export class TrendingList extends React.Component {
   /* First function called when the page finishes loading */
   /* At first we get the coordinates and the actual city. Then the screen is filled with the 5 most recent posts. */
   /* Once the posts are loaded, the Websocket is started, and then we start the Infinite Scroll. */
-  componentDidMount() {
+  async componentDidMount() {
     this.loading = true;
-    this.TrendingController.getCurrentCity().then(
-      () => {
-        this.TrendingController.getNearbyPosts(this.coords, null).then(
-          result => {
-            this.posts = result.data.statuses.map(status => {
-              return this.TrendingController.formatPost(status);
-            });
-            this.loading = false;
-            this.startSocket();
-          }
-        );
-      },
-      () => {
-        console.log("An error ocurred while getting the current city");
-        this.loading = false;
-      }
-    );
-    this.setInfiniteScroll();
+    try {
+      await this.TrendingController.getCurrentCity();
+      const nearbyPosts = await this.TrendingController.getNearbyPosts(
+        this.coords,
+        null
+      );
+      this.posts = nearbyPosts.data.statuses.map(status =>
+        this.TrendingController.formatPost(status)
+      );
+      this.startSocket();
+      this.setInfiniteScroll();
+    } catch (err) {
+      console.log("An error ocurred while getting the current city");
+    }
+    this.loading = false;
   }
 
   /* Function called everytime we change an input. In this case, the Youtube URL input or the Comment textarea. */
   handleInputChange = event => {
-    let key = event.target.name;
-    let value = event.target.value;
+    const key = event.target.name;
+    const value = event.target.value;
     return (this[key] = value);
   };
 
@@ -63,22 +60,19 @@ export class TrendingList extends React.Component {
   /* To post a new tweet, we neet to have a url OR a comment, at least one of them. */
   /* Otherwise an alert is shown to the user to fill one of them, or both. */
   /* Once the tweet is posted, the two fields are erased. */
-  postTweet = () => {
+  postTweet = async () => {
     if (!this.url && !this.post) {
       this.showInfoPost = true;
       return;
     }
 
     this.loading = true;
-    this.TrendingController.postNewTweet(this.url + " " + this.post).then(
-      () => {
-        this.loading = false;
-        this.showSuccessPost = true;
-      },
-      () => {
-        this.loading = false;
-      }
-    );
+    try {
+      await this.TrendingController.postNewTweet(this.url + " " + this.post);
+      this.showSuccessPost = true;
+    } catch (err) {
+      console.log("There was an error while posting the tweet.");
+    }
 
     this.post = "";
     this.url = "";
@@ -182,8 +176,8 @@ export class TrendingList extends React.Component {
         document.body.scrollTop + document.body.clientHeight >=
         document.body.scrollHeight
       ) {
-        let idx = this.posts.length - 1;
-        let lastId = this.posts[idx]._id;
+        const idx = this.posts.length - 1;
+        const lastId = this.posts[idx]._id;
         this.TrendingController.getNearbyPosts(this.coords, lastId).then(
           result => {
             result.data.statuses.map(status =>

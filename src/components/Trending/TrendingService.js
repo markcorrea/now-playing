@@ -7,7 +7,7 @@ export default class TrendingService {
   /* This function gets the 5 most recent posts in a 100Km range */
   /* If the 'lastId' variable is informed, it means that it is beind called by the Infinite Scrolling. */
   getNearbyPosts = (latlng, lastId = null) => {
-    let body = {
+    const body = {
       q: "url:spotify OR youtube #nowplaying",
       count: 5,
       geocode: latlng.lat + "," + latlng.lng + ",100km"
