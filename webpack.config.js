@@ -4,7 +4,6 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   entry: [
-    'babel-polyfill',
     './src/index'
   ],
   output: {
@@ -22,7 +21,15 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        use: ['babel-loader'],
+        exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env']
+            ]
+          }
+        }],
         include: path.join(__dirname, 'src')
       },
       {
