@@ -31,6 +31,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/plugin-proposal-decorators": "^7.3.0",
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
@@ -52,18 +53,17 @@
     "sass-loader": "^7.0.1",
     "socket.io-client": "^2.1.0",
     "style-loader": "^0.21.0",
+    "terser": "3.14.1",
     "url-loader": "^1.0.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
     "mobx": "^3.0.0",
     "mobx-react": "^4.1.0",
     "mobx-react-devtools": "^4.2.11",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0",
-    "terser": "^3.14.1"
+    "react-dom": "^15.1.0"
   }
 }
