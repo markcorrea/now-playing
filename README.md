@@ -1,14 +1,14 @@
-# Now Playing
+# Trending
 
 This project is also published on Netlify on the link:
 - https://marcusfrontend.netlify.com/
 
 PS: This projects connects to the Twitter API, which doesn't allow cross-origin access. That's why it connects to an API which makes the data transport. Check it here:
-- https://github.com/markcorrea/now-playing-passport
+- https://github.com/markcorrea/trending-passport
 
 Project overview:
 
-Now Playing is a project focused on showing the developer and its abilities. In this case the Frontend.
+Trending is a project focused on showing the developer and its abilities. In this case the Frontend.
 
 I have chosen to use React with Mobx and Webpack, mainly because these are the main frameworks I use today. React can divide the project in reusable components, and MobX makes the state management good to understand and it's so much easier than Redux. Webpack not just bundles the module, but gives me back the URL access and can convert all the files on the project (images, code, style, any) to understandable files to the browser.
 

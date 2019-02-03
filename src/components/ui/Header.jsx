@@ -12,12 +12,12 @@ export default class Header extends React.Component {
 
   render() {
     return (
-      <div className='npheader'>
+      <div className='t-header'>
         <div className='logo'>
           <i className='fa fa-headphones' />
         </div>
-        <div className='header-now-playing-on'>
-          <span>#nowPlaying on:</span> {this.TrendingController.currentCity}
+        <div className='header-trending-on'>
+          <span>Trending on:</span> {this.TrendingController.currentCity}
         </div>
         <div className='user-image'>
           <img alt='user' src={userImage} />

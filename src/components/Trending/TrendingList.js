@@ -68,12 +68,12 @@ export class TrendingList extends React.Component {
 
     this.loading = true
     try {
-      await this.TrendingController.postNewTweet(this.url + ' ' + this.post)
+      await this.TrendingController.postNewTweet('#nowplaying ' + this.url + ' ' + this.post)
       this.showSuccessPost = true
     } catch (err) {
       console.log('There was an error while posting the tweet.')
     }
-
+    this.loading = false
     this.post = ''
     this.url = ''
   }
@@ -139,7 +139,7 @@ export class TrendingList extends React.Component {
           <div className='row'>
             <div className='col-md-8'>{this.renderPosts()}</div>
             <div className='col-md-4'>
-              <div className='section-title'>Post on #nowPlaying</div>
+              <div className='section-title'>What are you listening now?</div>
               {this.renderFormContainer()}
             </div>
           </div>

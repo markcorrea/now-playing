@@ -18,7 +18,7 @@ export default class TrendingService {
     })
   }
 
-  /* Here we post a new tweet to BInowplaying. */
+  /* Here we post a new tweet to @obiscateiro. */
   postNewTweet = status => {
     return axios.post(
       this.API + 'tweet',

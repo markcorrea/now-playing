@@ -1,5 +1,5 @@
 {
-  "name": "nowplaying",
+  "name": "mrctrending",
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
   },
@@ -20,7 +20,7 @@
     }
   },
   "version": "1.0.0",
-  "description": "#NowPlaying trending app which allows to see the media being shared as well as publish.",
+  "description": "#MrcTrending app which allows to see the media being shared as well as publish.",
   "scripts": {
     "start": "npm run build",
     "test": "jest --watchAll",
