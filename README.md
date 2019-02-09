@@ -71,7 +71,7 @@ This project is installed using Node's Package Manager (NPM). If you don't have 
 
 To do so, you have to use Linux or MAC's Terminal. If you are using Windows, the command prompt won't work. I recommend downloading Git Bash.
 
-This project contains a package.json file, which means that the necessary libraries will be installes once you type the specified command. Being so, please go to the Terminal and access the root file of your project. Once done, run "npm install".
+This project contains a package.json file, which means that the necessary libraries will be installed once you type the specified command. Being so, please go to the Terminal and access the root file of your project. Once done, run "npm install".
 
 All libraries will be installed inside the node_modules folder.
 
