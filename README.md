@@ -65,7 +65,7 @@ WEBPACK
 GIT
 - Version control system, aiming on performance.
 
-# Project Installation:
+## Project Installation:
 
 This project is installed using Node's Package Manager (NPM). If you don't have it on your machine yet, you can download it here: https://nodejs.org/en/;
 
@@ -79,7 +79,7 @@ Once done, go to the terminal again and run "npm start".
 
 Webpack will start the server and , once done, you can access it by http://localhost:8080.
 
-# Project Structure:
+## Project Structure:
 
 The structure was all build using React's component concept.
 
