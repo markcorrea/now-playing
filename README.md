@@ -21,7 +21,7 @@ It is a simple page which connects to the Twitter API, and has some rules to sho
 
 On the right side of the feed, there is a formulary where the user can post, no need to access Twitter page to do that.
 
-# Technologies:
+## Technologies:
 
 NPM
 - Node Package Manager - a library that manages the available packages of node.
