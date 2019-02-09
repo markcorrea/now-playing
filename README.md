@@ -1,9 +1,5 @@
 # Trending
 
-```lskfjlsdkfj```
-
-`lskdfjlsdkfj`
-
 This project is also published on Netlify on the link:
 - https://marcusfrontend.netlify.com/
 
