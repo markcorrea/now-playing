@@ -68,7 +68,9 @@ export class TrendingList extends React.Component {
 
     this.loading = true
     try {
-      await this.TrendingController.postNewTweet('#nowplaying ' + this.url + ' ' + this.post)
+      await this.TrendingController.postNewTweet(
+        '#nowplaying ' + this.url + ' ' + this.post
+      )
       this.showSuccessPost = true
     } catch (err) {
       console.log('There was an error while posting the tweet.')
@@ -79,56 +81,48 @@ export class TrendingList extends React.Component {
   }
 
   /* Here we render the fields to post a new tweet. */
-  renderFormContainer = () => {
-    return (
-      <div className='form-container mt-20'>
-        <input
-          className='form-input'
-          name='url'
-          value={this.url}
-          onChange={this.handleInputChange}
-          placeholder='http://www.youtube...'
-        />
-        <div className='youtube-icon'>
-          <i className='fab fa-youtube' />
-        </div>
-        <textarea
-          className='form-textarea mt-10'
-          name='post'
-          value={this.post}
-          onChange={this.handleInputChange}
-          placeholder="Hey, tell us what you've been listening!"
-        />
-        <button
-          className='primary-button'
-          onClick={this.postTweet}
-          type='button'
-        >
-          Publish
-        </button>
-        <div style={{ clear: 'both' }} />
-        {this.showSuccessPost && (
-          <MessageBox
-            type='success'
-            message='Item posted successfully!'
-            show={() => (this.showSuccessPost = false)}
-          />
-        )}
-        {this.showInfoPost && (
-          <MessageBox
-            type='info'
-            message='Please insert a Youtube URL or post a comment!'
-            show={() => (this.showInfoPost = false)}
-          />
-        )}
+  renderFormContainer = () => (
+    <div className='form-container mt-20'>
+      <input
+        className='form-input'
+        name='url'
+        value={this.url}
+        onChange={this.handleInputChange}
+        placeholder='http://www.youtube...'
+      />
+      <div className='youtube-icon'>
+        <i className='fab fa-youtube' />
       </div>
-    )
-  }
+      <textarea
+        className='form-textarea mt-10'
+        name='post'
+        value={this.post}
+        onChange={this.handleInputChange}
+        placeholder="Hey, tell us what you've been listening!"
+      />
+      <button className='primary-button' onClick={this.postTweet} type='button'>
+        Publish
+      </button>
+      <div style={{ clear: 'both' }} />
+      {this.showSuccessPost && (
+        <MessageBox
+          type='success'
+          message='Item posted successfully!'
+          show={() => (this.showSuccessPost = false)}
+        />
+      )}
+      {this.showInfoPost && (
+        <MessageBox
+          type='info'
+          message='Please insert a Youtube URL or post a comment!'
+          show={() => (this.showInfoPost = false)}
+        />
+      )}
+    </div>
+  )
 
   /* Here we render the posts component. */
-  renderPosts = () => {
-    return <Posts data={this.posts} />
-  }
+  renderPosts = () => <Posts data={this.posts} />
 
   /* Here we put the elements together and render the page. */
   render() {
