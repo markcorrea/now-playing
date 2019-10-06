@@ -15,9 +15,9 @@ export default class Trending extends Component {
     return (
       <Provider TrendingController={this.TrendingController}>
         <div>
-          <Header {...this.props} />
-          <TrendingList {...this.props} />
-          <Footer {...this.props} />
+          <Header />
+          <TrendingList />
+          <Footer />
         </div>
       </Provider>
     )

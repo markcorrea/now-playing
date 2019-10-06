@@ -93,8 +93,8 @@ export class Posts extends React.Component {
               src={this.spotifyCode(url)}
               width='100%'
               height='80'
-              frameborder='0'
-              allowtransparency='true'
+              frameBorder='0'
+              allowTransparency='true'
             />
           </div>
         </div>
