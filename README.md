@@ -8,9 +8,7 @@ PS: This projects connects to the Twitter API, which doesn't allow cross-origin 
 
 ## Project Overview:
 
-Trending is a project focused on showing the developer and its abilities. In this case the Frontend.
-
-I have chosen to use React with Mobx and Webpack, mainly because these are the main frameworks I use today. React can divide the project in reusable components, and MobX makes the state management good to understand and it's so much easier than Redux. Webpack not just bundles the module, but gives me back the URL access and can convert all the files on the project (images, code, style, any) to understandable files to the browser.
+I have chosen to use React with Mobx and Webpack. React can divide the project in reusable components, and MobX makes the state management good to understand and, once this is a small application, there's no reason to use Redux. Webpack not just bundles the module, but gives me back the URL access and can convert all the files on the project (images, code, style, any) to understandable files to the browser.
 
 It is a simple page which connects to the Twitter API, and has some rules to show only those tweets we want to be shown on screen. These rules are:
 - Geolocation: first thing, it gets the current location of the user, such as latitude and longitude, and also the City.
@@ -36,7 +34,7 @@ ECMASCRIPT 6 (2015)
 - JavaScript recent updates on language, released in 2015.
 
 BABEL
-- Once EcmaScript6 was so recently released, many browsers still doesn't have support for its new features. So Babel is a translator, which converts all the code to simple EcmaScript5.
+- Many browsers still doesn't have support for EcmaScript6's new features. So Babel is a translator, which converts all the code to simple EcmaScript5.
 
 CSS/FILE/HTML/SASS/STYLE/URL LOADERS
 - Loaders to be used on webpack. Just like Babel, they convert the files for an understandable language and structure for the browser.
@@ -46,9 +44,6 @@ AXIOS
 
 SOCKET.IO
 - Enables real-time bidirectional event-based communication.
-
-JQUERY
-- JavaScript library, required by the other libraries.
 
 BOOTSTRAP
 - Styling library for a better CSS development.
