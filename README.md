@@ -1,12 +1,12 @@
 # Trending
 
 This project is also published on Netlify on the link:
-- https://marcusfrontend.netlify.com/
+- https://mrctrending.netlify.com/
 
 PS: This projects connects to the Twitter API, which doesn't allow cross-origin access. That's why it connects to an API which makes the data transport. Check it here:
 - https://github.com/markcorrea/trending-passport
 
-Project overview:
+Project Overview:
 
 Trending is a project focused on showing the developer and its abilities. In this case the Frontend.
 
